@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Browse Flashcard Sets - FlashLearn</title>
+    <link rel="stylesheet" href="styles/view-sets.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="dashboard.html" class="logo">FlashLearn</a>
+
+            <div class="search-container">
+                <div class="search">
+                    <input type="text" class="searchTerm" placeholder="Search flashcards, quizzes...">
+                    <button type="submit" class="searchButton">Search</button>
+                </div>
+            </div>
+
+            <ul class="nav-links">
+                <li><a href="dashboard.html">Dashboard</a></li>
+                <li><a href="view-sets.html" class="active">Browse Sets</a></li>
+                <li><a href="create.html">Create</a></li>
+                <li><a href="#">Quizzes</a></li>
+                <li class="user-menu">
+                    <div class="user-profile" id="user-profile">
+                        <div class="user-avatar">
+                            <span id="user-initials">JD</span>
+                        </div>
+                    </div>
+                    <div class="user-dropdown" id="user-dropdown">
+                        <a href="#" class="dropdown-item">Profile</a>
+                        <a href="#" class="dropdown-item">Settings</a>
+                        <div class="dropdown-divider"></div>
+                        <a href="#" class="dropdown-item" id="logout-btn">Logout</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Container -->
+    <div class="main-container">
+        <!-- Page Header -->
+        <div class="page-header">
+            <h1>Browse Flashcard Sets</h1>
+            <p>Discover public flashcard sets from all users or browse your own personal collection</p>
+        </div>
+
+        <!-- View Toggles -->
+        <div class="view-toggles">
+            <button class="toggle-btn active" id="public-sets-btn">Public Sets</button>
+            <button class="toggle-btn" id="my-sets-btn">My Sets</button>
+        </div>
+
+        <!-- Filter and Sort Controls -->
+        <div class="filter-controls">
+            <div class="search-filter">
+                <input type="text" id="filter-input" placeholder="Filter by title or tags...">
+                <button id="filter-btn">Filter</button>
+            </div>
+            <div class="sort-controls">
+                <label for="sort-select">Sort by:</label>
+                <select id="sort-select">
+                    <option value="newest">Newest First</option>
+                    <option value="oldest">Oldest First</option>
+                    <option value="az">A-Z</option>
+                    <option value="za">Z-A</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Sets Container - Loading State -->
+        <div class="loading-state" id="loading-state">
+            <div class="loading-spinner"></div>
+            <p>Loading flashcard sets...</p>
+        </div>
+
+        <!-- Sets Container - Error State -->
+        <div class="error-state" id="error-state" style="display: none;">
+            <div class="error-icon">⚠️</div>
+            <h2>Could not load flashcard sets</h2>
+            <p>Please try again or refresh the page</p>
+            <button class="btn" id="retry-btn">Retry</button>
+        </div>
+
+        <!-- Public Sets Container -->
+        <div class="sets-container" id="public-sets-container" style="display: none;">
+            <div class="sets-header">
+                <h2>Public Flashcard Sets</h2>
+                <span class="sets-count" id="public-sets-count">0 sets</span>
+            </div>
+            
+            <div class="empty-state" id="public-empty-state" style="display: none;">
+                <div class="empty-state-icon">🌎</div>
+                <h2>No public flashcard sets available</h2>
+                <p>Be the first to create and share a public flashcard set!</p>
+                <a href="create.html" class="btn">Create a Set</a>
+            </div>
+            
+            <div class="sets-grid" id="public-sets-grid">
+                <!-- Public sets will be displayed here -->
+            </div>
+        </div>
+
+        <!-- User Sets Container -->
+        <div class="sets-container" id="my-sets-container" style="display: none;">
+            <div class="sets-header">
+                <h2>My Flashcard Sets</h2>
+                <span class="sets-count" id="my-sets-count">0 sets</span>
+            </div>
+            
+            <div class="empty-state" id="my-empty-state" style="display: none;">
+                <div class="empty-state-icon">📚</div>
+                <h2>You don't have any flashcard sets yet</h2>
+                <p>Create your first set to start learning!</p>
+                <a href="create.html" class="btn">Create a Set</a>
+            </div>
+            
+            <div class="sets-grid" id="my-sets-grid">
+                <!-- User sets will be displayed here -->
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="scripts/view-sets.js"></script>
+</body>
+</html>
