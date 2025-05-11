@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings - FlashLearn</title>
+    <link rel="stylesheet" href="styles/base.css">
+    <link rel="stylesheet" href="styles/navbar.css">
+    <link rel="stylesheet" href="styles/settings.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="dashboard.html" class="logo">FlashLearn</a>
+
+            <div class="search-container">
+                <div class="search">
+                    <input type="text" class="searchTerm" placeholder="Search flashcards, quizzes...">
+                    <button type="submit" class="searchButton">Search</button>
+                </div>
+            </div>
+
+            <ul class="nav-links">
+                <li><a href="dashboard.html">Dashboard</a></li>
+                <li><a href="view-sets.html">Browse Sets</a></li>
+                <li><a href="create.html">Create</a></li>
+                <li><a href="#">Quizzes</a></li>
+                <li class="user-menu">
+                    <div class="user-profile" id="user-profile">
+                        <div class="user-avatar">
+                            <span id="user-initials">JD</span>
+                        </div>
+                    </div>
+                    <div class="user-dropdown" id="user-dropdown">
+                        <a href="profile.html" class="dropdown-item">Profile</a>
+                        <a href="settings.html" class="dropdown-item active">Settings</a>
+                        <div class="dropdown-divider"></div>
+                        <a href="#" class="dropdown-item" id="logout-btn">Logout</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Container -->
+    <div class="main-container">
+        <!-- Loading State -->
+        <div id="loading-state" class="loading-state">
+            <div class="loading-spinner"></div>
+            <p>Loading profile information...</p>
+        </div>
+
+        <!-- Error State -->
+        <div id="error-state" class="error-state" style="display: none;">
+            <div class="error-icon">⚠️</div>
+            <h2>Could not load profile</h2>
+            <p>Please try again or refresh the page</p>
+            <button class="btn" id="retry-btn">Retry</button>
+        </div>
+
+        <!-- Settings Container -->
+        <div id="settings-container" class="settings-container" style="display: none;">
+            <div class="settings-header">
+                <h1>Account Settings</h1>
+                <a href="profile.html" class="btn btn-outline">Back to Profile</a>
+            </div>
+
+            <!-- Settings Card -->
+            <div class="settings-card">
+                <form id="settings-form">
+                    <!-- Account Info Section -->
+                    <div class="form-section">
+                        <h2>Account Information</h2>
+                        <div class="form-group">
+                            <label for="name">Full Name</label>
+                            <input type="text" id="name" name="name" placeholder="Your name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" name="email" placeholder="Your email" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="phone">Phone Number (optional)</label>
+                            <input type="tel" id="phone" name="phone" placeholder="Your phone number">
+                        </div>
+                    </div>
+
+                    <!-- Password Section -->
+                    <div class="form-section">
+                        <h2>Change Password</h2>
+                        <p class="section-info">Leave blank to keep your current password</p>
+                        
+                        <div class="form-group">
+                            <label for="current-password">Current Password</label>
+                            <input type="password" id="current-password" name="current-password" placeholder="Your current password">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="new-password">New Password</label>
+                            <input type="password" id="new-password" name="new-password" placeholder="New password">
+                            <small>Must be at least 6 characters long</small>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="confirm-password">Confirm New Password</label>
+                            <input type="password" id="confirm-password" name="confirm-password" placeholder="Confirm new password">
+                        </div>
+                    </div>
+
+                    <!-- Alert for feedback -->
+                    <div id="settings-alert" class="alert" style="display: none;"></div>
+
+                    <!-- Form Actions -->
+                    <div class="form-actions">
+                        <button type="button" id="cancel-btn" class="btn btn-outline">Cancel</button>
+                        <button type="submit" class="btn">Save Changes</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="scripts/navbar.js"></script>
+    <script type="module" src="scripts/settings.js"></script>
+</body>
+</html>

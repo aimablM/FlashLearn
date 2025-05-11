@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Profile - FlashLearn</title>
+    <link rel="stylesheet" href="styles/profile.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="dashboard.html" class="logo">FlashLearn</a>
+
+            <div class="search-container">
+                <div class="search">
+                    <input type="text" class="searchTerm" placeholder="Search flashcards, quizzes...">
+                    <button type="submit" class="searchButton">Search</button>
+                </div>
+            </div>
+
+            <ul class="nav-links">
+                <li><a href="dashboard.html">Dashboard</a></li>
+                <li><a href="view-sets.html">Browse Sets</a></li>
+                <li><a href="create.html">Create</a></li>
+                <li><a href="#">Quizzes</a></li>
+                <li class="user-menu">
+                    <div class="user-profile" id="user-profile">
+                        <div class="user-avatar">
+                            <span id="user-initials">JD</span>
+                        </div>
+                    </div>
+                    <div class="user-dropdown" id="user-dropdown">
+                        <a href="profile.html" class="dropdown-item active">Profile</a>
+                        <a href="settings.html" class="dropdown-item">Settings</a>
+                        <div class="dropdown-divider"></div>
+                        <a href="#" class="dropdown-item" id="logout-btn">Logout</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Container -->
+    <div class="main-container">
+        <!-- Loading State -->
+        <div id="loading-state" class="loading-state">
+            <div class="loading-spinner"></div>
+            <p>Loading profile information...</p>
+        </div>
+
+        <!-- Error State -->
+        <div id="error-state" class="error-state" style="display: none;">
+            <div class="error-icon">⚠️</div>
+            <h2>Could not load profile</h2>
+            <p>Please try again or refresh the page</p>
+            <button class="btn" id="retry-btn">Retry</button>
+        </div>
+
+        <!-- Profile Container -->
+        <div id="profile-container" class="profile-container" style="display: none;">
+            <div class="profile-header">
+                <h1>My Profile</h1>
+                <a href="settings.html" class="btn">Edit Settings</a>
+            </div>
+
+            <!-- Profile Card -->
+            <div class="profile-card">
+                <div class="profile-section">
+                    <h2>User Information</h2>
+                    <div class="profile-info">
+                        <div class="info-row">
+                            <div class="info-label">Name</div>
+                            <div class="info-value" id="user-name">Loading...</div>
+                        </div>
+                        <div class="info-row">
+                            <div class="info-label">Email</div>
+                            <div class="info-value" id="user-email">Loading...</div>
+                        </div>
+                        <div class="info-row">
+                            <div class="info-label">Phone</div>
+                            <div class="info-value" id="user-phone">Loading...</div>
+                        </div>
+                        <div class="info-row">
+                            <div class="info-label">Member Since</div>
+                            <div class="info-value" id="user-joined">Loading...</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="profile-section">
+                    <h2>Learning Statistics</h2>
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-value" id="total-sets">0</div>
+                            <div class="stat-label">Flashcard Sets</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-value" id="total-flashcards">0</div>
+                            <div class="stat-label">Total Flashcards</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-value" id="public-sets">0</div>
+                            <div class="stat-label">Public Sets</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-value">320</div>
+                            <div class="stat-label">Minutes Studied</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="scripts/profile.js"></script>
+</body>
+</html>
