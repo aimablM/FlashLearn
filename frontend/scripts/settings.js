@@ -14,6 +14,10 @@ const confirmPasswordInput = document.getElementById('confirm-password');
 const settingsAlert = document.getElementById('settings-alert');
 const retryBtn = document.getElementById('retry-btn');
 const cancelBtn = document.getElementById('cancel-btn');
+const userInitials = document.getElementById('user-initials');
+const userProfile = document.getElementById('user-profile');
+const userDropdown = document.getElementById('user-dropdown');
+const logoutBtn = document.getElementById('logout-btn');
 
 // State variables
 let userData = null;
@@ -39,10 +43,19 @@ document.addEventListener('DOMContentLoaded', async function() {
             userData.id = userData._id;
         }
         
+        // Setup dropdown toggle
+        setupUserDropdown();
+        
+        // Setup logout functionality
+        setupLogout();
+        
+        // Update initials in avatar
+        updateUserAvatar(userData);
+        
         // Load user profile data
         await loadUserProfile(userData.id);
         
-        // Show settings form
+        // Hide loading state and show settings
         showSettings();
         
         // Setup event listeners
@@ -53,6 +66,46 @@ document.addEventListener('DOMContentLoaded', async function() {
         showError();
     }
 });
+
+// Update user avatar with initials
+function updateUserAvatar(userData) {
+    if (userInitials && userData.name) {
+        const initials = userData.name
+            .split(' ')
+            .map(name => name.charAt(0))
+            .join('');
+        userInitials.textContent = initials;
+    }
+}
+
+// Setup user dropdown toggle
+function setupUserDropdown() {
+    if (userProfile && userDropdown) {
+        userProfile.addEventListener('click', function(event) {
+            event.stopPropagation();
+            userDropdown.classList.toggle('active');
+        });
+        
+        // Close dropdown when clicking outside
+        document.addEventListener('click', function(event) {
+            if (!userProfile.contains(event.target) && !userDropdown.contains(event.target)) {
+                userDropdown.classList.remove('active');
+            }
+        });
+    }
+}
+
+// Setup logout functionality
+function setupLogout() {
+    if (logoutBtn) {
+        logoutBtn.addEventListener('click', function(event) {
+            event.preventDefault();
+            localStorage.removeItem('flashlearn_token');
+            localStorage.removeItem('flashlearn_user');
+            window.location.href = 'login.html';
+        });
+    }
+}
 
 // Load user profile data
 async function loadUserProfile(userId) {
@@ -124,7 +177,8 @@ function setupEventListeners() {
                 id: updatedUser._id,
                 _id: updatedUser._id,
                 name: updatedUser.name,
-                email: updatedUser.email
+                email: updatedUser.email,
+                phone: updatedUser.phone || ''
             }));
             
             // Show success message
@@ -138,6 +192,12 @@ function setupEventListeners() {
             // Reset button
             submitBtn.textContent = originalText;
             submitBtn.disabled = false;
+            
+            // Update avatar with new name if changed
+            if (updatedUser.name !== userData.name) {
+                userData.name = updatedUser.name;
+                updateUserAvatar(userData);
+            }
             
         } catch (error) {
             console.error('Error updating profile:', error);
