@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Study Flashcards - FlashLearn</title>
+    <link rel="stylesheet" href="styles/study.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="dashboard.html" class="logo">FlashLearn</a>
+
+            <div class="search-container">
+                <div class="search">
+                    <input type="text" class="searchTerm" placeholder="Search flashcards, quizzes...">
+                    <button type="submit" class="searchButton">Search</button>
+                </div>
+            </div>
+
+            <ul class="nav-links">
+                <li><a href="dashboard.html">Dashboard</a></li>
+                <li><a href="#">My Sets</a></li>
+                <li><a href="create.html">Create</a></li>
+                <li><a href="#">Quizzes</a></li>
+                <li class="user-menu">
+                    <div class="user-profile" id="user-profile">
+                        <div class="user-avatar">
+                            <span id="user-initials">JD</span>
+                        </div>
+                    </div>
+                    <div class="user-dropdown" id="user-dropdown">
+                        <a href="#" class="dropdown-item">Profile</a>
+                        <a href="#" class="dropdown-item">Settings</a>
+                        <div class="dropdown-divider"></div>
+                        <a href="#" class="dropdown-item" id="logout-btn">Logout</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Container -->
+    <div class="main-container">
+        <!-- Study Header -->
+        <div class="study-header">
+            <h1 id="set-title">Loading Flashcard Set...</h1>
+            <p id="set-description" class="set-description"></p>
+            
+            <div class="progress-container">
+                <span id="progress-text">Card 0 of 0</span>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progress-fill" style="width: 0%"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Flashcard Container -->
+        <div class="flashcard-container">
+            <div class="flashcard" id="flashcard">
+                <div class="flashcard-inner">
+                    <div class="flashcard-front">
+                        <div class="card-content" id="card-front">
+                            Loading...
+                        </div>
+                    </div>
+                    <div class="flashcard-back">
+                        <div class="card-content" id="card-back">
+                            Loading...
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="loading-overlay" id="loading-overlay">
+                <div class="loading-spinner"></div>
+                <p>Loading flashcards...</p>
+            </div>
+            
+            <div class="error-message" id="error-message">
+                <p>Error loading flashcards. Please try again.</p>
+                <button class="btn" id="retry-button">Retry</button>
+            </div>
+            
+            <div class="empty-state" id="empty-state">
+                <p>This set doesn't have any flashcards yet.</p>
+                <a href="dashboard.html" class="btn">Back to Dashboard</a>
+            </div>
+        </div>
+
+        <!-- Controls -->
+        <div class="controls">
+            <button class="btn btn-outline" id="prev-button" disabled>Previous</button>
+            <button class="btn" id="flip-button">Flip Card</button>
+            <button class="btn btn-outline" id="next-button" disabled>Next</button>
+        </div>
+        
+        <!-- Study Stats -->
+        <div class="study-stats">
+            <div class="stats-row">
+                <div class="stat-item">
+                    <span class="stat-label">Cards Viewed:</span>
+                    <span class="stat-value" id="cards-viewed">0</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">Time Studying:</span>
+                    <span class="stat-value" id="study-time">00:00</span>
+                </div>
+            </div>
+            
+            <div class="actions">
+                <a href="dashboard.html" class="btn btn-outline">Exit Study</a>
+                <button class="btn btn-outline" id="shuffle-button">Shuffle Cards</button>
+                <button class="btn" id="restart-button">Start Over</button>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="scripts/study.js"></script>
+</body>
+</html>

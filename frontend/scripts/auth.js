@@ -1,3 +1,4 @@
+// auth.js - Full file with updated localStorage handling
 import { post } from './api.js';
 
 // DOM Elements
@@ -62,14 +63,14 @@ loginForm.addEventListener('submit', async (e) => {
         // Store token in localStorage
         localStorage.setItem('flashlearn_token', data.token);
         
-        // Store user data in localStorage if "remember me" is checked
-        if (rememberMe) {
-            localStorage.setItem('flashlearn_user', JSON.stringify({
-                id: data._id,
-                name: data.name,
-                email: data.email
-            }));
-        }
+        // Store user data in localStorage - UPDATED to ensure id field is available
+        localStorage.setItem('flashlearn_user', JSON.stringify({
+            id: data._id,
+            _id: data._id,
+            name: data.name,
+            email: data.email,
+            phone: data.phone || ''
+        }));
         
         // Show success message
         loginAlert.className = 'alert success';
@@ -84,6 +85,7 @@ loginForm.addEventListener('submit', async (e) => {
         // Display error message
         loginAlert.className = 'alert error';
         loginAlert.textContent = error.message || 'Invalid email or password';
+        console.error('Login error:', error);
     }
 });
 
@@ -120,11 +122,13 @@ signupForm.addEventListener('submit', async (e) => {
         // Store token in localStorage
         localStorage.setItem('flashlearn_token', data.token);
         
-        // Store basic user info for future use
+        // Store user data in localStorage - UPDATED to ensure id field is available
         localStorage.setItem('flashlearn_user', JSON.stringify({
             id: data._id,
+            _id: data._id,
             name: data.name,
-            email: data.email
+            email: data.email,
+            phone: data.phone || ''
         }));
         
         // Show success message
@@ -140,6 +144,7 @@ signupForm.addEventListener('submit', async (e) => {
         // Display error message
         signupAlert.className = 'alert error';
         signupAlert.textContent = error.message || 'Error creating account';
+        console.error('Signup error:', error);
     }
 });
 

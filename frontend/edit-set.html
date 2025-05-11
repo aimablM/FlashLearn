@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Flashcard Set - FlashLearn</title>
+    <link rel="stylesheet" href="styles/edit-set.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="dashboard.html" class="logo">FlashLearn</a>
+
+            <div class="search-container">
+                <div class="search">
+                    <input type="text" class="searchTerm" placeholder="Search flashcards, quizzes...">
+                    <button type="submit" class="searchButton">Search</button>
+                </div>
+            </div>
+
+            <ul class="nav-links">
+                <li><a href="dashboard.html">Dashboard</a></li>
+                <li><a href="#">My Sets</a></li>
+                <li><a href="create.html">Create</a></li>
+                <li><a href="#">Quizzes</a></li>
+                <li class="user-menu">
+                    <div class="user-profile" id="user-profile">
+                        <div class="user-avatar">
+                            <span id="user-initials">JD</span>
+                        </div>
+                    </div>
+                    <div class="user-dropdown" id="user-dropdown">
+                        <a href="#" class="dropdown-item">Profile</a>
+                        <a href="#" class="dropdown-item">Settings</a>
+                        <div class="dropdown-divider"></div>
+                        <a href="#" class="dropdown-item" id="logout-btn">Logout</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Container -->
+    <div class="main-container">
+        <!-- Page Header -->
+        <div class="page-header">
+            <div id="breadcrumb">
+                <a href="create.html">My Flashcard Sets</a> &gt; <span id="set-title-breadcrumb">Loading set...</span>
+            </div>
+            <h1 id="set-title">Loading Flashcard Set...</h1>
+            <p id="set-description" class="set-description"></p>
+            <div class="set-meta">
+                <span class="set-tag visibility-tag" id="visibility-tag">Public</span>
+                <span id="flashcard-count">0 Flashcards</span>
+            </div>
+        </div>
+
+        <!-- Loading, Error, Empty states -->
+        <div class="loading-state" id="loading-state">
+            <div class="loading-spinner"></div>
+            <p>Loading flashcards...</p>
+        </div>
+
+        <div class="error-state" id="error-state" style="display: none;">
+            <div class="error-icon">⚠️</div>
+            <h2>Could not load flashcards</h2>
+            <p>Please try again or go back to your sets</p>
+            <div class="error-actions">
+                <button class="btn" id="retry-btn">Retry</button>
+                <a href="create.html" class="btn btn-outline">Back to Sets</a>
+            </div>
+        </div>
+
+        <!-- Add Flashcard Form -->
+        <div class="card" id="add-card-form" style="display: none;">
+            <div class="card-header">
+                <h2 class="card-title">Add New Flashcard</h2>
+                <button class="btn-toggle" id="toggle-form-btn" title="Minimize form">−</button>
+            </div>
+            <form id="flashcard-form">
+                <div class="form-columns">
+                    <div class="form-group">
+                        <label for="card-front">Front (Question)</label>
+                        <textarea id="card-front" placeholder="Enter the question or prompt" required></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="card-back">Back (Answer)</label>
+                        <textarea id="card-back" placeholder="Enter the answer or explanation" required></textarea>
+                    </div>
+                </div>
+                
+                <div class="form-actions">
+                    <button type="submit" class="btn">Add Flashcard</button>
+                </div>
+            </form>
+        </div>
+
+        <!-- Flashcards Container -->
+        <div class="flashcards-container" id="flashcards-container" style="display: none;">
+            <div class="container-header">
+                <h2>Flashcards</h2>
+                <div class="container-actions">
+                    <button class="btn btn-outline" id="sort-btn">Sort by Recent</button>
+                    <button class="btn" id="add-card-btn">Add Flashcard</button>
+                </div>
+            </div>
+            
+            <div class="empty-state" id="empty-state" style="display: none;">
+                <div class="empty-state-icon">📝</div>
+                <h2>No flashcards yet</h2>
+                <p>Add your first flashcard to start building your set</p>
+            </div>
+            
+            <div class="flashcards-list" id="flashcards-list">
+                <!-- Flashcards will be displayed here -->
+            </div>
+            
+            <div class="container-footer" id="container-footer" style="display: none;">
+                <a href="study.html" id="study-link" class="btn">Study This Set</a>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="scripts/edit-set.js"></script>
+</body>
+</html>

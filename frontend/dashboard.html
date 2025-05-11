@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FlashLearn - Dashboard</title>
+    <link rel="stylesheet" href="styles/dashboard.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="logo">FlashLearn</a>
+
+            <div class="search-container">
+                <div class="search">
+                    <input type="text" class="searchTerm" placeholder="Search flashcards, quizzes...">
+                    <button type="submit" class="searchButton">Search</button>
+                </div>
+            </div>
+
+            <ul class="nav-links">
+                <li><a href="dashboard.html" class="active">Dashboard</a></li>
+                <li><a href="#">My Sets</a></li>
+                <li><a href="create.html">Create</a></li>
+                <li><a href="#">Quizzes</a></li>
+                <li class="user-menu">
+                    <div class="user-profile" id="user-profile">
+                        <div class="user-avatar">
+                            <span id="user-initials">JD</span>
+                        </div>
+                    </div>
+                    <div class="user-dropdown" id="user-dropdown">
+                        <a href="#" class="dropdown-item">Profile</a>
+                        <a href="#" class="dropdown-item">Settings</a>
+                        <div class="dropdown-divider"></div>
+                        <a href="#" class="dropdown-item" id="logout-btn">Logout</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Container -->
+    <div class="main-container">
+        <!-- Dashboard Header -->
+        <div class="dashboard-header">
+            <div class="welcome-message">
+                <h1>Welcome back, <span id="user-name">John Doe</span>! <span class="user-badge student-badge">Student</span></h1>
+                <p>Here's what's happening with your flashcards and study progress.</p>
+            </div>
+            <div class="actions">
+                <a href="create.html" class="btn">Create Flashcard Set</a>
+                <a href="#" class="btn btn-outline">Take a Quiz</a>
+            </div>
+        </div>
+
+        <!-- Stats Cards -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-value" id="total-sets">0</div>
+                <div class="stat-label">Flashcard Sets</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value" id="total-flashcards">0</div>
+                <div class="stat-label">Total Flashcards</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value">320</div>
+                <div class="stat-label">Minutes Studied</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value" id="completion-percentage">0%</div>
+                <div class="stat-label">Flashcards Covered</div>
+            </div>
+        </div>
+
+        <!-- Study Progress Section -->
+        <div class="card progress-section">
+            <div class="card-header">
+                <h2 class="card-title">Your Study Progress</h2>
+            </div>
+
+            <div>
+                <h3 class="progress-heading">Overall Completion</h3>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="overall-progress" style="width: 0%"></div>
+                </div>
+                <div class="progress-stats">
+                    <span id="completion-text">0% Complete</span>
+                    <span id="sets-mastered">0/0 Sets Mastered</span>
+                </div>
+
+                <h3 class="progress-heading">Weekly Study Time</h3>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 40%"></div>
+                </div>
+                <div class="progress-stats">
+                    <span>2h / 5h Goal</span>
+                    <span>40% of Weekly Goal</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Recent Sets Section -->
+        <div class="card">
+            <div class="card-header">
+                <h2 class="card-title">Your Recent Sets</h2>
+                <a href="#" class="card-action">View All</a>
+            </div>
+            <div class="flashcard-sets" id="user-sets-container">
+                <!-- User sets will be inserted here dynamically -->
+                <div class="loading-message">Loading your flashcard sets...</div>
+            </div>
+        </div>
+
+        <!-- Public Sets Section -->
+        <div class="card">
+            <div class="card-header">
+                <h2 class="card-title">Public Flashcard Sets</h2>
+                <a href="#" class="card-action">Browse All</a>
+            </div>
+            <div class="flashcard-sets" id="public-sets-container">
+                <!-- Public sets will be inserted here dynamically -->
+                <div class="loading-message">Loading public flashcard sets...</div>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="scripts/dashboard.js"></script>
+</body>
+</html>
