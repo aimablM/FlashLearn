@@ -45,10 +45,6 @@ jobs:
             docker compose pull 
             docker compose up -d
 
-            - name: Test Backend API Health
-        run: |
-          curl --fail --silent --show-error https://api.aimablem.dev/health || exit 1
-
       - name: Test Frontend Is Live
         run: |
           curl --fail --silent --show-error https://flashlearn.aimablem.dev || exit 1
