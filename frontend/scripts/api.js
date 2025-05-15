@@ -1,5 +1,5 @@
 // Base URL for the API
-const BASE_URL = 'http://localhost:5001';
+const BASE_URL = 'https://api.aimablem.dev';
 
 /**
  * Get the JWT token from localStorage
