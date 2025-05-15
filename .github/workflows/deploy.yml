@@ -40,7 +40,7 @@ jobs:
           username: ubuntu
           key: ${{secrets.EC2_SSH_PRIVATE_KEY}}
           script: |
-            cd /home/ubuntu/flashlearn
+            cd flashlearn
             docker compose down || true
             docker compose pull 
             docker compose up -d
