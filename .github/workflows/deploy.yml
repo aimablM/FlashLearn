@@ -51,6 +51,13 @@ jobs:
 
       - name: Test Backend Is Live
         run: |
-          curl --fail --silent --show-error https://api.aimablem.dev || exit 1
-
-
+          for i in {1..10}; do
+            echo "Checking backend (try $i)..."
+            if curl --fail --silent --show-error https://api.aimablem.dev; then
+              echo "Backend is up!"
+              exit 0
+            fi
+            sleep 5
+          done
+          echo "Backend failed to respond after 10 attempts."
+          exit 1
