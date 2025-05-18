@@ -4,7 +4,7 @@
 
 # FlashLearn - Cloud-Powered Learning Platform
 
-![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/aimablM/flashlearn/deploy.yml?label=CI%2FCD%20Pipeline&style=for-the-badge&logo=github-actions&logoColor=white)
+![GitHub Actions Pipeline Status](https://img.shields.io/github/actions/workflow/status/aimablM/flashlearn/deploy.yml?label=CI%2FCD%20Pipeline&style=for-the-badge&logo=github-actions&logoColor=white)
 ![AWS](https://img.shields.io/badge/AWS-%23FF9900.svg?style=for-the-badge&logo=amazon-aws&logoColor=white)
 ![Docker](https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white)
 ![NGINX](https://img.shields.io/badge/NGINX-009639?style=for-the-badge&logo=nginx&logoColor=white)
@@ -220,7 +220,7 @@ jobs:
 - **Secret Management**: Sensitive information stored as GitHub secrets
 - **Failure Handling**: Proper error checking and reporting throughout pipeline
 
-The pipeline demonstrates industry best practices for continuous deployment with proper security, testing, and infrastructure management.
+The pipeline demonstrates industry best practices for continuous deployment with proper security, testing, and infrastructure management
 
 ## Containerization Strategy
 
