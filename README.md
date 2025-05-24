@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="frontend/assets/amlogo.svg" alt="FlashLearn Logo" width="100" height="100">
+  <img src="frontend/assets/amlogo.svg" alt="FlashLearn Logo" width="100" height="80">
 </p>
 
 # FlashLearn - Cloud-Powered Learning Platform
